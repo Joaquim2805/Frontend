@@ -20,8 +20,9 @@
   <div class="slider-container" style="position: absolute; top: 135px; left: 50px; width: 100%; height: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
 
     <br>
-    <input type="range" style=" width: 750px;position: absolute;" v-model="sliderValue2" min="0" max="512">
-    <input type="range" style=" width: 750px; position: absolute; left: 0;" v-model="sliderValue3" min="0" max="512">
+    <input type="range" style="width: 750px; position: absolute;" v-model="sliderValue2" min="0" :max="selectedMaxValue">
+
+    <input type="range" style=" width: 750px; position: absolute; left: 0;" v-model="sliderValue3" min="0" :max="selectedMaxValue">
 
 
         
@@ -43,14 +44,7 @@
    
     </div>
 
-    <div class="button-container" style="position: absolute;left : 850px ; bottom: 350px;">
-      <button class="custom-button" @click="incrementSliderValue">+10 Borne inf</button>
-      <button class="custom-button" @click="incrementSliderValue3">+10 Borne supp</button>
-    </div>
-    <div class="button-container" style="position: absolute;left : 850px ; bottom: 300px;">
-      <button class="custom-button" @click="decrementSliderValue">-10 Borne inf</button>
-      <button class="custom-button" @click="decrementSliderValue3">-10 Borne supp</button>
-    </div>
+ 
   
 
 
@@ -105,30 +99,7 @@ export default {
       return donnee.slice(start, end);
     },
     
-    incrementSliderValue() {
-      
-      this.sliderValue2 += 10;
-      if (this.sliderValue2>512) {
-        
-        this.sliderValue2 = (this.sliderValue2 )/100 + 10 - 0.1    ;
-        
-      }
-    },
-    incrementSliderValue3() {
-      this.sliderValue3 += 10;
 
-      if (this.sliderValue3>512) {
-        
-        this.sliderValue3 = (this.sliderValue3 )/100 + 10 - 0.1    ;
-        
-      }
-    },
-    decrementSliderValue() {
-      this.sliderValue2 -= 10;
-    },
-    decrementSliderValue3() {
-      this.sliderValue3 -= 10;
-    },
     sendMaxValue() {
     // Effectuez la requête GET vers votre API FastAPI avec la nouvelle valeur maximale
     const apiUrl = `http://127.0.0.1:8001/items?minValue=0&maxValue=${this.selectedMaxValue}&numBins=${this.selectedMaxValue}`;
@@ -163,6 +134,24 @@ export default {
     },  
 
   },
+  watch: {
+  sliderValue2(newVal) {
+    const sliderValue3Number = parseFloat(this.sliderValue3);
+
+    if (newVal >= sliderValue3Number) {
+      this.sliderValue2 = sliderValue3Number - 1;
+    }
+  },
+  sliderValue3(newVal) {
+    const sliderValue2Number = parseFloat(this.sliderValue2);
+
+    if (newVal <= sliderValue2Number) {
+      this.sliderValue3 = sliderValue2Number + 1;
+    }
+  },
+},
+
+
 
 
 };
