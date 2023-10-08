@@ -1,0 +1,29 @@
+{
+  "name": "vite-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vite preview",
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mdi/font": "5.9.55",
+    "@vue/cli": "^5.0.8",
+    "axios": "^1.5.1",
+    "chart.js": "^4.4.0",
+    "roboto-fontface": "*",
+    "vue": "^3.3.4",
+    "vuejs-datepicker": "^1.6.2",
+    "vuetify": "^3.4.0-alpha.1",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5",
+    "vite-plugin-vuetify": "^1.0.0-alpha.12",
+    "vue-cli-plugin-vuetify": "~2.5.8"
+  },
+  "type": "module"
+}
