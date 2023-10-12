@@ -5,8 +5,8 @@
     <nav>
       <ul style="margin-left: 20px; margin-top: 25px;">
         <li style="margin-bottom: 20px;"><a href="#">À propos</a></li>
-        <li><a href="#">Base de donnée</a></li>
-        <li><a href="#">Test du Pipeline</a></li>
+        <li><a href="/file">Base de donnée</a></li>
+        <li><a href="/login">Connexion</a></li>
         <!-- Ajoutez d'autres liens de navigation ici si nécessaire -->
       </ul>
     </nav>
